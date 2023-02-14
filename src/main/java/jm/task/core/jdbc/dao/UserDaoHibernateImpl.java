@@ -25,7 +25,7 @@ public class UserDaoHibernateImpl implements UserDao {
             transaction = session.beginTransaction();
             session.createNativeQuery(createUsersTableDdl).executeUpdate();
             transaction.commit();
-            System.out.println("create Users Table");
+            System.out.println("create users Table");
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
@@ -42,7 +42,7 @@ public class UserDaoHibernateImpl implements UserDao {
             transaction = session.beginTransaction();
             session.createNativeQuery(dropUsersTableDdl).executeUpdate();
             transaction.commit();
-            System.out.println("drop Users Table");
+            System.out.println("drop users table");
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
@@ -60,7 +60,7 @@ public class UserDaoHibernateImpl implements UserDao {
             User user = new User(name, lastName, age);
             session.save(user);
             transaction.commit();
-            System.out.println("save User " + name + lastName + age);
+            System.out.println("save user " + name + lastName + age);
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
@@ -80,7 +80,9 @@ public class UserDaoHibernateImpl implements UserDao {
             if (user != null) {
                 session.delete(user);
                 transaction.commit();
-                System.out.println("remove User By Id " + id);
+                System.out.println("remove user iy id " + id);
+            } else {
+                System.out.println("user by Id " + id + " not found");
             }
         } catch (Exception e) {
             if (transaction != null) {
@@ -109,7 +111,7 @@ public class UserDaoHibernateImpl implements UserDao {
             transaction = session.beginTransaction();
             session.createQuery(cleanUsersTableDml).executeUpdate();
             transaction.commit();
-            System.out.println("clean Users Table");
+            System.out.println("clean users table");
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
